@@ -34,5 +34,5 @@
 // the data afterwards.
 #define DHT_PULSES 41
 
-int pi_dht_read(int pin, float* humidity, float* temperature);
+int pi_dht_read(int pin, double* humidity, double* temperature, int* raw);
 

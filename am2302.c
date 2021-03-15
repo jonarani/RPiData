@@ -20,7 +20,7 @@
 // SOFTWARE.
 #include "am2302.h"
 
-int pi_dht_read(int pin, float* humidity, float* temperature) {
+int pi_dht_read(int pin, double* humidity, double* temperature, int* raw) {
   // Validate humidity and temperature arguments and set them to zero.
   if (humidity == NULL || temperature == NULL) {
     return -3;
@@ -111,6 +111,7 @@ int pi_dht_read(int pin, float* humidity, float* temperature) {
       // Calculate humidity and temp for DHT22 sensor.
       *humidity = (data[0] * 256 + data[1]) / 10.0f;
       *temperature = ((data[2] & 0x7F) * 256 + data[3]) / 10.0f;
+      *raw = 7; // TODO: data bytes to raw
       if (data[2] & 0x80) {
         *temperature *= -1.0f;
       }
