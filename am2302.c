@@ -30,7 +30,7 @@ int pi_dht_read(int pin, double* humidity, double* temperature, int* raw) {
 
   // Store the count that each DHT bit pulse is low and high.
   // Make sure array is initialized to start at zero.
-  int pulseCounts[DHT_PULSES*2] = {0};
+  uint32_t pulseCounts[DHT_PULSES*2] = {0};
 
   // Set pin to output.
   bcm2835_gpio_fsel(pin, BCM2835_GPIO_FSEL_OUTP);
